@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 
+# require 'faker'
+
+# Booking.delete_all
+# User.delete_all
+# Flat.delete_all
+
+# 20.times do ||
+#  Flats.new(
+#   name:
+#   adress: Faker::Address.full_address
+#   price:
+#   user_id:
+#  )
