@@ -1,5 +1,7 @@
 <ul>
   <% @flats.each do |flat| %>
-    <li><%= flat.name %></li>
+    <li><%= link_to flat.name, flat_path(flat) %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add new flat", new_flat_path() %>
