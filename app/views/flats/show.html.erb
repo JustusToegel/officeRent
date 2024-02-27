@@ -6,7 +6,7 @@
 <p>Requested bookings:</p>
 <ul>
 <% @flat.bookings.each do |booking| %>
-  <li><%= booking.request_date %></li>
+  <li><%= link_to booking.request_date, booking_path(booking) %></li>
 <% end %>
 </ul>
 
