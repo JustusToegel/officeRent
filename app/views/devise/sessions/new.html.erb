@@ -1,0 +1,25 @@
+<!-- new.html.erb -->
+
+<div class="form-control">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <h2 class="title">Log in</h2>
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                label: "Enter Email",
+                wrapper_html: { class: "input-field" }
+              %>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" },
+                label: "Enter Password",
+                wrapper_html: { class: "input-field" }
+              %>
+    <%= f.input :remember_me, as: :boolean, label: "Remember me", wrapper_html: { class: "checkbox-field" } if devise_mapping.rememberable? %>
+    <div class="form-actions">
+      <%= f.button :submit, "Log in", class: "submit-btn" %>
+    </div>
+    <%= render "devise/shared/links" %>
+  <% end %>
+</div>
