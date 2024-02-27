@@ -3,6 +3,13 @@
 <p><%= @flat.price %></p>
 <p><%= @flat.user.email %></p>
 
+<p>Requested bookings:</p>
+<ul>
+<% @flat.bookings.each do |booking| %>
+  <li><%= booking.request_date %></li>
+<% end %>
+</ul>
+
 <%= link_to "Edit flat", edit_flat_path(@flat) %>
 
 <%= link_to "back Home", flats_path %>
@@ -11,3 +18,5 @@
   flat_path(@flat),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
+
+ <%= link_to "Book me", new_flat_booking_path(@flat) %>

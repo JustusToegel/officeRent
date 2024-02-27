@@ -12,8 +12,11 @@ Rails.application.routes.draw do
 
   root to: "flats#index"
 
-  resources :flats
+  resources :flats do
+    resources :bookings, only: %i[new create]
+  end
 
+  resources :bookings, only: %i[show destroy]
   # get "flats/new", to: "flats#new", as: :new_flat
   # post "flats", to: "flats#create"
 

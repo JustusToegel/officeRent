@@ -1,0 +1,7 @@
+<h1>New Booking</h1>
+<%= simple_form_for [@flat, @booking] do |f| %>
+  <%= f.input :request_date %>
+  <%= f.submit "Book now", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "back Home", flats_path %>

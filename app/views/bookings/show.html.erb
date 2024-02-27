@@ -1,0 +1,12 @@
+<h2><strong>Booking</strong></h2>
+
+<p><%= @booking.user.email %></p>
+<p><%= @booking.flat.name %></p>
+<p><%= @booking.request_date %></p>
+
+<%= link_to "Delete",
+    booking_path(@booking),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+
+<%= link_to "back Home", flats_path %>
