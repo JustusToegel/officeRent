@@ -22,13 +22,19 @@ justus = User.create(
   password: "123456"
 )
 
-20.times do
-  Flat.new(
-    name: Faker::Name.name,
-    address: Faker::Address.full_address,
-    price: [49, 99, 199, 249, 299, 329, 399, 449, 499, 529, 549].sample,
-    user_id: andy.id
-  ).save
+2.times do
+  number = 0
+  10.times do
+    flat = Flat.new(
+      name: Faker::Name.name,
+      address: Faker::Address.full_address,
+      price: [49, 99, 199, 249, 299, 329, 399, 449, 499, 529, 549].sample,
+      user_id: andy.id
+    )
+    number += 2
+    flat.photo.attach(io: File.open("app/assets/images/seeding_flats/#{number}.jpg"), filename: "#{number}.jpg", content_type: 'image/png')
+    flat.save
+  end
 end
 
 5.times do

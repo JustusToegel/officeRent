@@ -9,9 +9,17 @@
 <div class="cards-grid">
   <% @flats.each do |flat| %>
       <div class="card">
-        <div class="card_form">
-          <span><%= flat.address %></span>
-        </div>
+          <% if flat.photo.attached? %>
+            <div class="card_form-image">
+              <%= cl_image_tag flat.photo.key, height: 300, width: 300, crop: :fill %>
+              <span><%= flat.address %></span>
+            </div>
+          <% else   %>
+            <div class="card_form">
+                <span><%= flat.address %></span>
+            </div>
+          <% end %>
+
         <div class="card_data">
           <div style="display: flex" class="data">
             <div class="text">

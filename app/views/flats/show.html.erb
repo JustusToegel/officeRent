@@ -1,13 +1,11 @@
   <div class="card-show">
-    <img class="card__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Snowy Mountains">
-    <div class="card__content">
+      <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>    <div class="card__content">
       <h1><%= @flat.address %><h1>
       <h2 class="card__text"><%= @flat.name %></h2>
       <p>Price:</p>
       <p class="card__text"><%= @flat.price %>€ / day</p>
       <p>Contact the owner of the flat</p>
       <p class="card__text"><%= @flat.user.email %></p>
-
 
     <% if @flat.user == current_user %>
 
