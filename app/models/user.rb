@@ -5,4 +5,9 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, uniqueness: true
+  validates :password, presence: true
+  validates :password, length: { minimum: 5 }
 end
