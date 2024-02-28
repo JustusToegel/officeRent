@@ -17,8 +17,6 @@ andy = User.create(
   password: "123456"
 )
 
-
-
 justus = User.create(
   email: "justus@gmail.com",
   password: "123456"
