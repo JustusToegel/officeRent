@@ -1,6 +1,6 @@
 <!-- new.html.erb -->
 
-<div class="form-control">
+<div class="form-control container w-25" style="margin-top: 200px">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <h2 class="title">Log in</h2>
     <%= f.input :email,

@@ -1,146 +1,29 @@
-<ul>
-  <% @flats.each do |flat| %>
-    <li><%= link_to flat.name, flat_path(flat) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Add new flat", new_flat_path() %>
-
-<%# ############################################################################################# %>
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "office_rent.jpeg" %>);">
-
-
   <h1 class="title">Discover OfficeRent!</h1>
   <p>Your Solution for Finding the Perfect Office Space.</p>
-
   <p>- Explore a wide variety of office spaces.</p>
   <p>- Find places that fit your budget and needs.</p>
-
-
-
   <p>- Easy to use and hassle-free.</p>
 </div>
 
-
-<div class="container my-4">
-  <div class="row align-items-center">
-    <div class="col">
+<div class="cards-grid">
+  <% @flats.each do |flat| %>
       <div class="card">
         <div class="card_form">
-          <span>(Köln Mitte)</span>
+          <span><%= flat.address %></span>
         </div>
         <div class="card_data">
           <div style="display: flex" class="data">
             <div class="text">
-              <label class="text_m">Desk to share!</label>
+              <label class="text_m">Flat to share!</label>
               <div class="cube text_s">
-                <label class="side front" >Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
+                <label class="side front" ><%= flat.price %>€</label>
+                <label class="side top"><%= flat.name %></label>
               </div>
             </div>
           </div>
-          <span title="Acceder a la lista (Temas)"><a href="#" class="Btn">Book Now!</a></span>
+          <span title="Acceder a la lista (Temas)"><%= link_to "Book Now!", flat_path(flat), class: "Btn" %></span>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card_form">
-          <span>(Topic)</span>
-        </div>
-        <div class="card_data">
-          <div style="display: flex" class="data">
-            <div class="text">
-              <label class="text_m">Main Title</label>
-              <div class="cube text_s">
-                <label class="side front">Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
-              </div>
-            </div>
-          </div>
-          <span title="Acceder a la lista (Temas)">Access</span>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card_form">
-          <span>(Topic)</span>
-        </div>
-        <div class="card_data">
-          <div style="display: flex" class="data">
-            <div class="text">
-              <label class="text_m">Main Title</label>
-              <div class="cube text_s">
-                <label class="side front">Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
-              </div>
-            </div>
-          </div>
-          <span title="Acceder a la lista (Temas)"><a href="#" class="Btn">Book Now!</a></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <div class="row my-4">
-    <div class="col">
-      <div class="card">
-        <div class="card_form">
-          <span>(Topic)</span>
-        </div>
-        <div class="card_data">
-          <div style="display: flex" class="data">
-            <div class="text">
-              <label class="text_m">Desk to share!</label>
-              <div class="cube text_s">
-                <label class="side front" >Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
-              </div>
-            </div>
-          </div>
-          <span title="Acceder a la lista (Temas)"><a href="#" class="Btn">Book Now!</a></span>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card_form">
-          <span>(Topic)</span>
-        </div>
-        <div class="card_data">
-          <div style="display: flex" class="data">
-            <div class="text">
-              <label class="text_m">Main Title</label>
-              <div class="cube text_s">
-                <label class="side front">Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
-              </div>
-            </div>
-          </div>
-          <span title="Acceder a la lista (Temas)">Access</span>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card_form">
-          <span>(Topic)</span>
-        </div>
-        <div class="card_data">
-          <div style="display: flex" class="data">
-            <div class="text">
-              <label class="text_m">Main Title</label>
-              <div class="cube text_s">
-                <label class="side front">Access the list (Topic)</label>
-                <label class="side top">Username-id</label>
-              </div>
-            </div>
-          </div>
-          <span title="Acceder a la lista (Temas)">Access</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
