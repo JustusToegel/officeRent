@@ -1,22 +1,40 @@
-<h2><%= @flat.name %></h2>
-<p><%= @flat.address %></p>
-<p><%= @flat.price %></p>
-<p><%= @flat.user.email %></p>
+  <div class="card-show">
+    <img class="card__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Snowy Mountains">
+    <div class="card__content">
+      <h1><%= @flat.address %><h1>
+      <h2 class="card__text"><%= @flat.name %></h2>
+      <p>Price:</p>
+      <p class="card__text"><%= @flat.price %>€ / day</p>
+      <p>Contact the owner of the flat</p>
+      <p class="card__text"><%= @flat.user.email %></p>
 
-<p>Requested bookings:</p>
-<ul>
-<% @flat.bookings.each do |booking| %>
-  <li><%= link_to booking.request_date, booking_path(booking) %></li>
-<% end %>
-</ul>
 
-<%= link_to "Edit flat", edit_flat_path(@flat) %>
+    <% if @flat.user == current_user %>
 
-<%= link_to "back Home", flats_path %>
+    <div class="actions">
+        <p>Requested bookings:</p>
+        <ul>
+        <% @flat.bookings.each do |booking| %>
+          <li><%= link_to booking.request_date, booking_path(booking) %></li>
+        <% end %>
+        </ul>
 
-<%= link_to "Delete",
-  flat_path(@flat),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+        <%= link_to "Edit flat", edit_flat_path(@flat), class: "btn btn-primary" %>
 
- <%= link_to "Book me", new_flat_booking_path(@flat) %>
+        <%= link_to "Delete",
+          flat_path(@flat),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "btn btn-danger"
+        %>
+    </div>
+
+
+    <% else %>
+
+      <div class="actions text-center">
+        <%= link_to "Book me", new_flat_booking_path(@flat), class: "Btn2"%>
+      </div>
+
+    <% end %>
+     </div>
+  </div>

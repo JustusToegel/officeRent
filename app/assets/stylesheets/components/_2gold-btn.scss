@@ -1,6 +1,6 @@
-.Btn {
-  width: 100px;
-  height: 30px;
+.Btn2 {
+  width: 100%;
+  height: 80px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
@@ -14,11 +14,12 @@
   cursor: pointer;
   transition-duration: 1s;
   overflow: hidden;
+  margin: 0 auto;
 }
 
-.Btn::before {
+.Btn2::before {
   position: absolute;
-  content: "See Details!";
+  content: "Book now!";
   color: #ffd277;
   display: flex;
   align-items: center;
@@ -31,16 +32,16 @@
   background-size: 200%;
 }
 
-.Btn:hover {
+.Btn2:hover {
   background-position: right;
   transition-duration: 1s;
 }
 
-.Btn:hover::before {
+.Btn2:hover::before {
   background-position: right;
   transition-duration: 1s;
 }
 
-.Btn:active {
+.Btn2:active {
   transform: scale(0.95);
 }
