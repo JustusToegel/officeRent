@@ -8,6 +8,7 @@
   gap: 0.5rem;
   height: max-content;
   width: fit-content;
+
   margin: 0 auto;
 }
 .card_form {
@@ -20,7 +21,7 @@
   overflow: hidden;
 }
 .card_form span {
-  font-size: 1.5em;
+  font-size: 1+em;
   position: absolute;
   inset: 0;
   padding: 5px 10px;
@@ -61,7 +62,7 @@
   font-size: 0.9em;
 }
 .text_s {
-  color: #9147ff;
+  color: #ffd277;
   font-size: 0.6em;
 }
 .cube {
@@ -88,4 +89,5 @@
 }
 .front {
   transform: translate3d(0, 0, 1em);
+  font-size: 18px;
 }
