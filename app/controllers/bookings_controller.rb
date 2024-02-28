@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_flat, only: %i[new create]
 
+  def index
+    @bookings = current_user.bookings
+  end
+
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
@@ -11,7 +15,6 @@ class BookingsController < ApplicationController
     @booking.flat = @flat
     @booking.user = current_user
     @booking.save
-
     redirect_to booking_path(@booking)
   end
 
