@@ -1,24 +1,38 @@
-<%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="card-show">
+      <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>    <div class="card__content">
+      <h1><%= @flat.address %><h1>
+      <h2 class="card__text"><%= @flat.name %></h2>
+      <p>Price:</p>
+      <p class="card__text"><%= @flat.price %>€ / day</p>
+      <p>Contact the owner of the flat</p>
+      <p class="card__text"><%= @flat.user.email %></p>
 
-<h2><%= @flat.name %></h2>
-<p><%= @flat.address %></p>
-<p><%= @flat.price %></p>
-<p><%= @flat.user.email %></p>
+    <% if @flat.user == current_user %>
 
-<p>Requested bookings:</p>
-<ul>
-<% @flat.bookings.each do |booking| %>
-  <li><%= link_to booking.request_date, booking_path(booking) %></li>
-<% end %>
-</ul>
+    <div class="actions">
+        <p>Requested bookings:</p>
+        <ul>
+        <% @flat.bookings.each do |booking| %>
+          <li><%= link_to booking.request_date, booking_path(booking) %></li>
+        <% end %>
+        </ul>
 
-<%= link_to "Edit flat", edit_flat_path(@flat) %>
+        <%= link_to "Edit flat", edit_flat_path(@flat), class: "btn btn-primary" %>
 
-<%= link_to "back Home", flats_path %>
+        <%= link_to "Delete",
+          flat_path(@flat),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "btn btn-danger"
+        %>
+    </div>
 
-<%= link_to "Delete",
-  flat_path(@flat),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
 
- <%= link_to "Book me", new_flat_booking_path(@flat) %>
+    <% else %>
+
+      <div class="actions text-center">
+        <%= link_to "Book me", new_flat_booking_path(@flat), class: "Btn2"%>
+      </div>
+
+    <% end %>
+     </div>
+  </div>
