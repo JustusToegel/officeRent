@@ -1,5 +1,11 @@
   <div class="card-show">
-      <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>    <div class="card__content">
+      <% if @flat.photo.attached? %>
+        <div>
+          <%= cl_image_tag @flat.photo.key, class: "card__img" %>
+        </div>
+      <% end  %>
+
+      <div class="card__content">
       <h1><%= @flat.address %><h1>
       <h2 class="card__text"><%= @flat.name %></h2>
       <p>Price:</p>
@@ -10,9 +16,9 @@
     <% if @flat.user == current_user %>
 
     <div class="actions">
-        <p>Requested bookings:</p>
+        <p>Pending bookings:</p>
         <ul>
-        <% @flat.bookings.each do |booking| %>
+        <% @flat.bookings.where(status: "pending").each do |booking| %>
           <li><%= link_to booking.request_date, booking_path(booking) %></li>
         <% end %>
         </ul>

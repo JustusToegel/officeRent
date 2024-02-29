@@ -15,7 +15,11 @@ class FlatsController < ApplicationController
     @flat.user_id = current_user.id
     @flat.save
 
-    redirect_to flat_path(@flat)
+    if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new
+    end
   end
 
   # show Read One
@@ -46,6 +50,8 @@ class FlatsController < ApplicationController
   def myflats
     @flats = current_user.flats
   end
+
+
 
   private
 
