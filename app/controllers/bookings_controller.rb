@@ -5,6 +5,12 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "accepted")
+    redirect_to flat_path(set_flat)
+  end
+
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
@@ -29,8 +35,9 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    @flat = @booking.flat
     @booking.destroy
-    redirect_to bookings_path(), status: :see_other
+    redirect_to flat_path(@flat)
   end
 
   private
