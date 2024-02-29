@@ -29,7 +29,7 @@ justus = User.create(
       name: Faker::Name.name,
       address: Faker::Address.full_address,
       price: [49, 99, 199, 249, 299, 329, 399, 449, 499, 529, 549].sample,
-      user_id: andy.id
+      user_id: [andy.id, justus.id].sample
     )
     number += 2
     flat.photo.attach(io: File.open("app/assets/images/seeding_flats/#{number}.jpg"), filename: "#{number}.jpg", content_type: 'image/png')
@@ -37,10 +37,11 @@ justus = User.create(
   end
 end
 
-5.times do
+20.times do
   Booking.new(
-    user_id: justus.id,
+    user_id: [andy.id, justus.id].sample,
     flat_id: Flat.all.sample.id,
-    request_date: [*Date.today..Date.new(2027, 5, 23)].sample
+    request_date: [*Date.today..Date.new(2027, 5, 23)].sample,
+    status: ["pending", "accepted", "declined"].sample
   ).save
 end

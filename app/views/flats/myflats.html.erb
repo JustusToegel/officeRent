@@ -5,6 +5,11 @@
 <br>
 <ul>
   <% @flats.each do |flat| %>
-    <li><%= link_to flat.name, flat_path(flat) %></li>
+    <li>
+      <ul>
+        <%= link_to flat.name, flat_path(flat) %>
+        <p>You have <%= flat.bookings.where(status: "pending").count %> pending bookings</p>
+      </ul>
+    </li>
   <% end %>
 </ul>
