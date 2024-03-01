@@ -1,0 +1,36 @@
+.form-control {
+  background-color: rgba(140, 137, 137, 0.042);
+  color: #efeded39;
+  border-radius: 25px;
+  margin-right: 10px;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+}
+
+.form-control::placeholder {
+  color: #efeded;
+}
+
+.search-button {
+  height: 50px;
+  width: 200px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #efeded;
+  transition: all 0.5s;
+}
+.search-button:hover {
+  box-shadow: 1px 1px 200px #252525;
+  color: #ffffff80;
+  transform: scale(1.1);
+}
+.search-button-txt {
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 4px;
+  border-radius: 30px;
+}
