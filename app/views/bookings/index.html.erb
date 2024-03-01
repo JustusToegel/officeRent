@@ -7,7 +7,7 @@
 
 <div class="cards-bookings">
   <% @bookings.each do |booking| %>
-    <div class="card-product">
+    <div class="card-product justify-content-between">
       <% if booking.flat.photo.attached? %>
         <%= cl_image_tag booking.flat.photo.key, height: 300, width: 300, crop: :fill %>
       <% else   %>
@@ -22,8 +22,8 @@
 
       </div>
 
-      <div class="card-product-actions">
-          <div class="status"><%= booking.status %></div>
+      <div class="card-product-actions text-center">
+          <div class="status"><%= booking.status.capitalize %></div>
           <%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
       </div>
     </div>

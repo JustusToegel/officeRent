@@ -3,15 +3,19 @@
 <br>
 <br>
 <br>
-<h2><strong>Booking</strong></h2>
+<div class="container flat-form">
+  <h2><strong>You successfully requested:</strong></h2>
 
-<p><%= @booking.flat.name %></p>
-<p><%= @booking.request_date %></p>
-<p><%= @booking.status %></p>
+  <p><%= @booking.flat.name %></p>
+  <p><%= @booking.request_date %></p>
+  <p>current status:  <%= @booking.status.capitalize %> </p>
 
-<%= link_to "Delete",
-    booking_path(@booking),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
+<br>
+  <%= link_to "Continue", flats_path, class: "btn btn-flat" %>
 
-<%= link_to "back Home", flats_path %>
+<br>
+  <p>Not happy with your booking?
+  <%= link_to "Delete", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
+  </p>
+
+</div>
