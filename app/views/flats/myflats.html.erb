@@ -5,7 +5,7 @@
 <br>
 <div class="cards-bookings">
   <% @flats.each do |flat| %>
-    <div class="card-product">
+    <div class="card-product justify-content-between">
       <% if flat.photo.attached? %>
         <%= cl_image_tag flat.photo.key, height: 300, width: 300, crop: :fill %>
       <% else   %>
@@ -23,7 +23,9 @@
       <div class="card-product-actions">
           <p><strong>Pendings:</strong></p>
           <%= link_to flat_path(flat) do %>
-            <div class="requests-notification"><strong><%= flat.bookings.where(status: "pending").count %></strong></div>
+            <div class="<%= (flat.bookings.where(status: "pending").count == 0) ? "requests-notification2" : "requests-notification" %>">
+              <strong><%= flat.bookings.where(status: "pending").count %></strong>
+            </div>
           <% end %>
       </div>
     </div>
