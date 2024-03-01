@@ -23,7 +23,7 @@
       </div>
 
       <div class="card-product-actions text-center">
-          <div class="status"><%= booking.status.capitalize %></div>
+          <div class="<%= (booking.status == "accepted") ? "status" : "status2" %>"><%= booking.status.capitalize %></div>
           <%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
       </div>
     </div>
