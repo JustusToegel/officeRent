@@ -6,6 +6,19 @@
   <p>- Easy to use and hassle-free.</p>
 </div>
 
+<div class="row justify-content-center">
+  <div class="col-sm-3 my-4">
+    <%= form_with url: flats_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Where do you want to rent?"
+      %>
+    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="cards-grid">
   <% @flats.each do |flat| %>
       <div class="card">
