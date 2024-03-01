@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   # get "flats/new", to: "flats#new", as: :new_flat
   # post "flats", to: "flats#create"
 
-
+  # get '/contact', :to => 'pages#contact'
+  # get '/about', :to => 'pages#about'
 end
