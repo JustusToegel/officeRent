@@ -1,10 +1,10 @@
 <%# banner %>
 <div class="banner">
-  <h1 class="title">Discover OfficeRent!</h1>
+  <h1 class="title" style="font-size:10vw">Office Rent</h1>
   <p>Your Solution for Finding the Perfect Office Space.</p>
-  <p>- Explore a wide variety of office spaces.</p>
-  <p>- Find places that fit your budget and needs.</p>
-  <p>- Easy to use and hassle-free.</p>
+ Explore a wide variety of office spaces.
+ Find places that fit your budget and needs.
+ Easy to use and hassle-free.</p>
 </div>
 <%# end of banner %>
 
@@ -13,7 +13,7 @@
     <%= form_with url: flats_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-search",
         placeholder: "Where do you want to rent?"
       %>
     <%= submit_tag "Search", name: "", class: "search-button type1" %>
