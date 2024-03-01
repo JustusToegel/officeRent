@@ -2,9 +2,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #242824;
+  background-color: #e5dfdf55;
   padding: 20px;
   border-radius: 6px;
+  border-color: #e5dfdf88;
   gap: 0.5rem;
   height: max-content;
   width: fit-content;
@@ -15,7 +16,7 @@
   width: 15em;
   height: 15em;
   border-radius: 4px;
-  background-color: #bbb9be0b;
+  background-color: #bbb9be0d;
   transition: 0.2s ease-in-out;
   overflow: hidden;
 }
