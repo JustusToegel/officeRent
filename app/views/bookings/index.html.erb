@@ -3,8 +3,29 @@
 <br>
 <br>
 <br>
-<ul>
+  <%# link_to booking.request_date, booking_path(booking) %>
+
+<div class="cards-bookings">
   <% @bookings.each do |booking| %>
-    <li><%= link_to booking.request_date, booking_path(booking) %></li>
+    <div class="card-product justify-content-between">
+      <% if booking.flat.photo.attached? %>
+        <%= cl_image_tag booking.flat.photo.key, height: 300, width: 300, crop: :fill %>
+      <% else   %>
+        <%= image_tag "empty-office-with-pot-plant_1170-1080.jpg" %>
+      <% end %>
+
+      <div class="card-product-infos">
+        <h2><%= booking.flat.name %></h2>
+        <p>Requested Date:<br><strong><%= booking.request_date %></strong></p>
+        <p><%= booking.flat.address %></p>
+        <p><strong><%= booking.flat.price %>€</strong></p>
+
+      </div>
+
+      <div class="card-product-actions text-center">
+          <div class="<%= (booking.status == "accepted") ? "status" : "status2" %>"><%= booking.status.capitalize %></div>
+          <%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

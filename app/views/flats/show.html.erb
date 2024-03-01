@@ -1,5 +1,11 @@
   <div class="card-show">
-      <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>    <div class="card__content">
+      <% if @flat.photo.attached? %>
+        <div>
+          <%= cl_image_tag @flat.photo.key, class: "card__img" %>
+        </div>
+      <% end  %>
+
+      <div class="card__content">
       <h1><%= @flat.address %><h1>
       <h2 class="card__text"><%= @flat.name %></h2>
       <p>Price:</p>
@@ -9,21 +15,60 @@
 
     <% if @flat.user == current_user %>
 
-    <div class="actions">
-        <p>Requested bookings:</p>
-        <ul>
-        <% @flat.bookings.each do |booking| %>
-          <li><%= link_to booking.request_date, booking_path(booking) %></li>
+      <div>
+        <p><strong>Pending bookings:</strong></p>
+        <ul class = "list-unstyled">
+        <% @flat.bookings.where(status: "pending").each do |booking| %>
+          <li>
+            <div class="notification">
+              <div class="notification-content">
+                <p><small>Request for</small></p>
+                <p><%= booking.request_date %></p>
+              </div>
+              <div class="notification-actions">
+                <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to reject this booking?"} do %>
+                  <button class="btn btn-danger"><i class="fa-solid fa-ban text-white"></i></button>
+                <% end %>
+                <%= link_to booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you sure you want to accept the booking?"} do %>
+                  <button class="btn btn-primary"><i class="fa-solid fa-check"></i></button>
+                <% end %>
+              </div>
+            </div>
+          </li>
         <% end %>
         </ul>
+      </div>
+      <div>
+        <p><strong>Accepted bookings:</strong></p>
+        <ul class = "list-unstyled">
+        <% @flat.bookings.where(status: "accepted").each do |booking| %>
+          <li>
+            <div class="notification">
+              <div class="notification-content">
+                <p><small>Booked for</small></p>
+                <p><%= booking.request_date %></p>
+              </div>
+              <div class="notification-actions">
+                <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to reject this booking?"} do %>
+                  <button class="btn btn-danger"><i class="fa-solid fa-ban text-white"></i></button>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+<br>
+<br>
+<br>
+    <div class="actions">
+      <%= link_to "Edit flat", edit_flat_path(@flat), class: "btn btn-primary" %>
 
-        <%= link_to "Edit flat", edit_flat_path(@flat), class: "btn btn-primary" %>
-
-        <%= link_to "Delete",
-          flat_path(@flat),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-          class: "btn btn-danger"
-        %>
+      <%= link_to "Delete",
+        flat_path(@flat),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "btn btn-danger"
+      %>
     </div>
 
 

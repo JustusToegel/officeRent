@@ -3,6 +3,9 @@ class FlatsController < ApplicationController
   # index Read All
   def index
     @flats = Flat.all
+    if params[:query].present?
+      @flats = Flat.search_by_name_and_address(params[:query])
+    end
   end
 
   # Create
@@ -14,12 +17,12 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user_id = current_user.id
     @flat.save
+
     if @flat.save
       redirect_to flat_path(@flat)
     else
       render :new
     end
-
   end
 
   # show Read One
@@ -50,6 +53,8 @@ class FlatsController < ApplicationController
   def myflats
     @flats = current_user.flats
   end
+
+
 
   private
 
