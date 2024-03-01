@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update(status: "accepted")
+    @booking.update(status: "Accepted")
     redirect_to flat_path(set_flat)
   end
 

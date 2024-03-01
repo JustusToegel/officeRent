@@ -6,4 +6,11 @@ class Flat < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :address, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_address,
+    against: [ :name, :address ],
+    using: {
+      tsearch: { prefix: true }
+  }
 end
