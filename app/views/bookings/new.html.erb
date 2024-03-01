@@ -1,12 +1,12 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>New Booking</h1>
-<%= simple_form_for [@flat, @booking] do |f| %>
-  <%= f.input :request_date %>
-  <%= f.submit "Book now", class: "btn btn-primary" %>
-<% end %>
 
-<%= link_to "back Home", flats_path %>
+<div class="background">
+  <div class="booking_class">
+    <h1>New Booking</h1>
+    <%= simple_form_for [@flat, @booking], defaults: { input_html: { class: 'input_flat' } } do |f| %>
+      <%= f.input :request_date, input_html: { color: 'white' } %>
+      <%= f.submit "Book now", class: "good-button" %>
+    <% end %>
+    <br>
+    <%= link_to "back Home", flats_path, class: "good-button" %>
+  </div>
+</div>
