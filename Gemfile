@@ -11,6 +11,9 @@ gem "sprockets-rails"
 # cloudinary for pictures
 gem "cloudinary"
 
+# search bar gem
+gem "pg_search"
+
 # For seeding users and apartments
 gem 'faker'
 

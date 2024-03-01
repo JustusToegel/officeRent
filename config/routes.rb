@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookings, only: %i[show destroy index]
+  resources :bookings, only: %i[show destroy index update]
   # get "flats/new", to: "flats#new", as: :new_flat
   # post "flats", to: "flats#create"
 

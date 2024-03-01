@@ -3,8 +3,29 @@
 <br>
 <br>
 <br>
-<ul>
+<div class="cards-bookings">
   <% @flats.each do |flat| %>
-    <li><%= link_to flat.name, flat_path(flat) %></li>
+    <div class="card-product">
+      <% if flat.photo.attached? %>
+        <%= cl_image_tag flat.photo.key, height: 300, width: 300, crop: :fill %>
+      <% else   %>
+        <%= image_tag "empty-office-with-pot-plant_1170-1080.jpg" %>
+      <% end %>
+
+      <div class="card-product-infos">
+        <%= link_to flat_path(flat) do %>
+          <h2 class="flat-name"><%= flat.name %></h2>
+        <% end %>
+        <p><%= flat.address %></p>
+        <p><strong><%= flat.price %>€</strong></p>
+      </div>
+
+      <div class="card-product-actions">
+          <p><strong>Pendings:</strong></p>
+          <%= link_to flat_path(flat) do %>
+            <div class="requests-notification"><strong><%= flat.bookings.where(status: "pending").count %></strong></div>
+          <% end %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
