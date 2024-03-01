@@ -23,7 +23,9 @@
       <div class="card-product-actions">
           <p><strong>Pendings:</strong></p>
           <%= link_to flat_path(flat) do %>
-            <div class="requests-notification"><strong><%= flat.bookings.where(status: "pending").count %></strong></div>
+            <div class="<%= (flat.bookings.where(status: "pending").count == 0) ? "requests-notification2" : "requests-notification" %>">
+              <strong><%= flat.bookings.where(status: "pending").count %></strong>
+            </div>
           <% end %>
       </div>
     </div>
