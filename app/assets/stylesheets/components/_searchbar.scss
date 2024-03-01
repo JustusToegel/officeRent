@@ -1,13 +1,14 @@
-.form-control {
+.form-search {
   background-color: rgba(140, 137, 137, 0.042);
   color: #efeded39;
   border-radius: 25px;
   margin-right: 10px;
   border: 2px solid #ffffff;
   padding: 10px 20px;
+  width: 400px;
 }
 
-.form-control::placeholder {
+.form-search::placeholder {
   color: #efeded;
 }
 
